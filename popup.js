@@ -1,14 +1,18 @@
+var arr = [];
 function fun(){
-    var arr = [];
     chrome.tabs.onUpdated.addListener((tabid, changedInfo, tab) => {
         if (changedInfo.status === "complete") {
-            if (arr.length < 10)
-            {
-            console.log(tab.url);
             arr.push(tab.url)
-            }
-            else   console.log("stop");    
         }
-    })   
+    }) 
+}
+
+function stop(){
+    for(var i=0;i<arr.length;i++)
+     console.log(arr[i]);
+    arr =[]; 
 }
 $("#count").click(fun);
+$("#stop").click(stop);
+
+
